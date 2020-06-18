@@ -1,4 +1,4 @@
-package com.ua.verdysh.controller;
+package com.ua.verdysh.model;
 
 public interface Movable {
     void move(int min, int max);

@@ -2,8 +2,6 @@ package com.ua.verdysh.model;
 
 import java.util.Map;
 
-import com.ua.verdysh.controller.HouseElevator;
-
 public class House {
     private HouseElevator elevator;
     private Map<Integer, Floor> houseUnit;

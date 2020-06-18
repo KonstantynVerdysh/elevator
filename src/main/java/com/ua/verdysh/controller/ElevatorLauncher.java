@@ -5,13 +5,14 @@ import java.util.List;
 
 import com.ua.verdysh.model.Floor;
 import com.ua.verdysh.model.House;
+import com.ua.verdysh.model.HouseElevator;
 import com.ua.verdysh.model.Person;
 
-public class DataHandler {
+public class ElevatorLauncher {
     private DataGenerator generator;
     private House house;
 
-    public DataHandler(DataGenerator generator) {
+    public ElevatorLauncher(DataGenerator generator) {
         this.generator = generator;
         house = generator.generateHouse();
     }
@@ -46,7 +47,8 @@ public class DataHandler {
     }
     
     private int getMaxDesireFloor(Person[] peopleInElevator) {
-        int max = house.getSize() / 2;
+        final int avaregeFloorNum = house.getSize() / 2;
+        int max = avaregeFloorNum;
         for (Person person : peopleInElevator) {
             if (person != null && person.getDesireFloor() > max) {
                 max = person.getDesireFloor();
@@ -56,7 +58,8 @@ public class DataHandler {
     }
     
     private int getMinDesireFloor(Person[] peopleInElevator) {
-        int min = house.getSize() / 2;
+        final int avaregeFloorNum = house.getSize() / 2;
+        int min = avaregeFloorNum;
         for (Person person : peopleInElevator) {
             if (person != null && person.getDesireFloor() < min) {
                 min = person.getDesireFloor();
@@ -141,6 +144,6 @@ public class DataHandler {
     }
 
     private void addNewPeopleOnFloor(Floor floor, int peopleGoOutCount) {
-        generator.generatePersonOnFloor(floor, peopleGoOutCount);
+        generator.generatePersonOnFloor(floor, peopleGoOutCount, house.getSize());
     }
 }

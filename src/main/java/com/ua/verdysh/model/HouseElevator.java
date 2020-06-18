@@ -1,6 +1,4 @@
-package com.ua.verdysh.controller;
-
-import com.ua.verdysh.model.Elevator;
+package com.ua.verdysh.model;
 
 public class HouseElevator extends Elevator implements Movable {
     private int maxFloor;

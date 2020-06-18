@@ -5,7 +5,8 @@ import java.util.List;
 
 public class Floor {
     private static int counter = 0;
-    private final int floor = ++counter;
+    private final int floorNumber = ++counter;
+    
     private List<Person> peopleOnFloor;
 
     public Floor() {
@@ -20,12 +21,8 @@ public class Floor {
         peopleOnFloor.add(person);
     }
 
-    public static int getCounter() {
-        return counter;
-    }
-
-    public int getFloor() {
-        return floor;
+    public int getFloorNumber() {
+        return floorNumber;
     }
 
     @Override

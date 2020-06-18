@@ -5,12 +5,13 @@ import java.util.Map;
 
 import com.ua.verdysh.model.Floor;
 import com.ua.verdysh.model.House;
+import com.ua.verdysh.model.HouseElevator;
 import com.ua.verdysh.model.Person;
 
 public class DataGenerator {
     private static final int MAX_HOUSE_SIZE = 20;
     private static final int MIN_HOUSE_SIZE = 5;
-    private static final int MAX_PEOPLE_ON_FLOOR = 1;
+    private static final int MAX_PEOPLE_ON_FLOOR = 10;
     private static final int MIN_PEOPLE_ON_FLOOR = 0;
     private static final int MAX_ELEVATOR_CAPACITY = 5;
 
@@ -21,16 +22,16 @@ public class DataGenerator {
         return new House(house, new HouseElevator(houseSize, MAX_ELEVATOR_CAPACITY));
     }
 
-    public void generatePersonOnFloor(Floor floor, int amount) {
+    public void generatePersonOnFloor(Floor floor, int amount, int houseSize) {
         for (int count = 0; count < amount; count++) {
-            floor.addPersonOnFloor(new Person(getDesireFloor(floor)));
+            floor.addPersonOnFloor(new Person(getDesireFloor(floor, houseSize)));
         }
     }
 
     private void generatePeople(Map<Integer, Floor> house) {
         for (Map.Entry<Integer, Floor> entry : house.entrySet()) {
             int peopleOnFloor = randomInt(MAX_PEOPLE_ON_FLOOR, MIN_PEOPLE_ON_FLOOR);
-            generatePersonOnFloor(entry.getValue(), peopleOnFloor);
+            generatePersonOnFloor(entry.getValue(), peopleOnFloor, house.size());
         }
     }
 
@@ -42,11 +43,11 @@ public class DataGenerator {
         return result;
     }
 
-    private int getDesireFloor(Floor floor) {
-        int result = randomInt(Floor.getCounter());
-        if (result == floor.getFloor()) {
-            while (result == floor.getFloor()) {
-                result = randomInt(Floor.getCounter());
+    private int getDesireFloor(Floor floor, int houseSize) {
+        int result = randomInt(houseSize);
+        if (result == floor.getFloorNumber()) {
+            while (result == floor.getFloorNumber()) {
+                result = randomInt(houseSize);
             }
         }
         return result;
@@ -56,7 +57,7 @@ public class DataGenerator {
         return 1 + (int) (Math.random() * max);
     }
 
-    private int randomInt(int max, int min) {
+    private static int randomInt(int max, int min) {
         return min + (int) (Math.random() * (max - min + 1));
     }
 }
