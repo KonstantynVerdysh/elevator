@@ -39,13 +39,13 @@ public class DataHandler {
         }
         addNewPeopleOnFloor(floor, peopleLeftCount);
         
-        int min = getMin(peopleInElevator);
-        int max = getMax(peopleInElevator);
+        int minDesireFloor = getMinDesireFloor(peopleInElevator);
+        int maxDesireFloor = getMaxDesireFloor(peopleInElevator);
         
-        elevator.move(min, max);
+        elevator.move(minDesireFloor, maxDesireFloor);
     }
     
-    private int getMax(Person[] peopleInElevator) {
+    private int getMaxDesireFloor(Person[] peopleInElevator) {
         int max = 5;
         for (Person person : peopleInElevator) {
             if (person != null && person.getDesireFloor() > max) {
@@ -55,7 +55,7 @@ public class DataHandler {
         return max;
     }
     
-    private int getMin(Person[] peopleInElevator) {
+    private int getMinDesireFloor(Person[] peopleInElevator) {
         int min = 0;
         for (Person person : peopleInElevator) {
             if (person != null && person.getDesireFloor() < min) {

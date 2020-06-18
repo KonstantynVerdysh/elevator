@@ -22,8 +22,8 @@ public class HouseElevator extends Elevator implements Movable {
         return isUp;
     }
 
-    public void move(int min, int max) {
-        if (!setCurrentFloor(min, max)) {
+    public void move(int minDesireFloor, int maxDesireFloor) {
+        if (!setCurrentFloor(minDesireFloor, maxDesireFloor)) {
             changeDirection();
         }
     }
@@ -32,14 +32,14 @@ public class HouseElevator extends Elevator implements Movable {
         isUp = !isUp;
     }
 
-    private boolean setCurrentFloor(int min, int max) {
+    private boolean setCurrentFloor(int minDesireFloor, int maxDesireFloor) {
         if (isUp) {
-            if (currentFloor < maxFloor && currentFloor < max) {
+            if (currentFloor < maxFloor && currentFloor < maxDesireFloor) {
                 currentFloor++;
                 return true;
             }
         } else {
-            if (currentFloor > MIN_FLOOR && currentFloor > min) {
+            if (currentFloor > MIN_FLOOR && currentFloor > minDesireFloor) {
                 currentFloor--;
                 return true;
             }
