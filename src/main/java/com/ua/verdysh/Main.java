@@ -14,7 +14,7 @@ public class Main {
             ui.prettyFormatter();
             runner.process();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(999);
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }

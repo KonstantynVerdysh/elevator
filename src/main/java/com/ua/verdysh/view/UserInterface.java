@@ -23,7 +23,7 @@ public class UserInterface {
     
     private List<String> printStep() {
         List<String> result = new ArrayList<>();
-        result.add("Press Ctrl+C to exit\n" + String.format("%12s%d%s", "***FLOOR ", house.getElevator().getCurrentFloor(), "***\n"));
+        result.add("Press Ctrl+C to exit\n" + String.format("%12s%d%s\n", "***FLOOR ", house.getElevator().getCurrentFloor(), "***"));
         for (Map.Entry<Integer, Floor> entry : house.getHouseUnit().entrySet()) {
             result.add(1, createRow(entry.getValue(), entry.getKey()));
         }
