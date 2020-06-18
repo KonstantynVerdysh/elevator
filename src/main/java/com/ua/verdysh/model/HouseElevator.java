@@ -1,5 +1,7 @@
 package com.ua.verdysh.model;
 
+import com.ua.verdysh.model.interfaces.Movable;
+
 public class HouseElevator extends Elevator implements Movable {
     private int maxFloor;
     private int currentFloor;
