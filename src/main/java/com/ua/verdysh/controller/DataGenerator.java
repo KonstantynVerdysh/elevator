@@ -10,7 +10,7 @@ import com.ua.verdysh.model.Person;
 public class DataGenerator {
     private static final int MAX_HOUSE_SIZE = 20;
     private static final int MIN_HOUSE_SIZE = 5;
-    private static final int MAX_PEOPLE_ON_FLOOR = 10;
+    private static final int MAX_PEOPLE_ON_FLOOR = 1;
     private static final int MIN_PEOPLE_ON_FLOOR = 0;
     private static final int MAX_ELEVATOR_CAPACITY = 5;
 

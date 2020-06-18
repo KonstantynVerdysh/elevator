@@ -46,7 +46,7 @@ public class DataHandler {
     }
     
     private int getMaxDesireFloor(Person[] peopleInElevator) {
-        int max = 5;
+        int max = house.getSize() / 2;
         for (Person person : peopleInElevator) {
             if (person != null && person.getDesireFloor() > max) {
                 max = person.getDesireFloor();
@@ -56,7 +56,7 @@ public class DataHandler {
     }
     
     private int getMinDesireFloor(Person[] peopleInElevator) {
-        int min = 0;
+        int min = house.getSize() / 2;
         for (Person person : peopleInElevator) {
             if (person != null && person.getDesireFloor() < min) {
                 min = person.getDesireFloor();
